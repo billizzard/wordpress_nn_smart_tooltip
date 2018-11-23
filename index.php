@@ -9,10 +9,10 @@
  *
  * @link              AuthorUri
  * @since             1.0.0
- * @package           Myusefulplugin
+ * @package           NnSmartTooltip
  *
  * @wordpress-plugin
- * Plugin Name:       MyUsefulPlugin
+ * Plugin Name:       NnSmartTooltip
  * Plugin URI:        MyUserfulPlugin
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
@@ -20,7 +20,6 @@
  * Author URI:        AuthorUri
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       myusefulplugin
  * Domain Path:       /languages
  */
 
@@ -38,32 +37,30 @@ define('PLUGIN_NAME_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-myusefulplugin-activator.php
  */
-function activateMyusefulplugin()
+function activateNnSmartTooltip()
 {
-    require_once plugin_dir_path(__FILE__) . 'includes/MyusefulpluginActivator.php';
-    MyusefulpluginActivator::activate();
+    require_once plugin_dir_path(__FILE__) . 'includes/NnSmartTooltipActivator.php';
+    NnSmartTooltipActivator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-myusefulplugin-deactivator.php
  */
-function deactivateMyusefulplugin()
+function deactivateNnSmartTooltip()
 {
-    require_once plugin_dir_path(__FILE__) . 'includes/MyusefulpluginDeactivator.php';
-    MyusefulpluginDeactivator::deactivate();
+    require_once plugin_dir_path(__FILE__) . 'includes/NnSmartTooltipDeactivator.php';
+    NnSmartTooltipDeactivator::deactivate();
 }
 
-register_activation_hook(__FILE__, 'activateMyusefulplugin');
-register_deactivation_hook(__FILE__, 'deactivateMyusefulplugin');
+register_activation_hook(__FILE__, 'activateNnSmartTooltip');
+register_deactivation_hook(__FILE__, 'deactivateNnSmartTooltip');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . 'includes/Myusefulplugin.php';
+require plugin_dir_path(__FILE__) . 'includes/NnSmartTooltip.php';
 
 /**
  * Begins execution of the plugin.
@@ -74,10 +71,10 @@ require plugin_dir_path(__FILE__) . 'includes/Myusefulplugin.php';
  *
  * @since    1.0.0
  */
-function runMyusefulplugin()
+function runNnSmartTooltip()
 {
-    $plugin = new Myusefulplugin();
+    $plugin = new NnSmartTooltip();
     $plugin->run();
 }
 
-runMyusefulplugin();
+runNnSmartTooltip();

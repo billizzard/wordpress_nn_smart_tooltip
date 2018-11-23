@@ -6,11 +6,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package Myusefulplugin
- * @subpackage Myusefulplugin/includes
+ * @package NnSmartTooltip
+ * @subpackage NnSmartTooltip/includes
  * @author AuthorName <AuthorEmail@email.com>
  */
-class MyusefulpluginLoader
+class NnSmartTooltipLoader
 {
     /**
      * The array of actions registered with WordPress.

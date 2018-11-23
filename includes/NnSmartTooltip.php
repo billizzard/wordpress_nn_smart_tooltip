@@ -9,11 +9,11 @@
  * version of the plugin.
  *
  * @since 1.0.0
- * @package Myusefulplugin
- * @subpackage Myusefulplugin/includes
+ * @package NnSmartTooltip
+ * @subpackage NnSmartTooltip/includes
  * @author AuthorName <AuthorEmail@email.com>
  */
-class Myusefulplugin
+class NnSmartTooltip
 {
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
@@ -21,7 +21,7 @@ class Myusefulplugin
      *
      * @since 1.0.0
      * @access protected
-     * @var MyusefulpluginLoader $loader Maintains and registers all hooks for the plugin.
+     * @var NnSmartTooltipLoader $loader Maintains and registers all hooks for the plugin.
      */
     protected $loader;
 
@@ -60,7 +60,7 @@ class Myusefulplugin
             $this->version = '1.0.0';
         }
 
-        $this->pluginName = 'myusefulplugin';
+        $this->pluginName = 'NnSmartTooltip';
 
         $this->loadDependencies();
         $this->setLocale();
@@ -73,10 +73,10 @@ class Myusefulplugin
      *
      * Include the following files that make up the plugin:
      *
-     * - MyusefulpluginLoader. Orchestrates the hooks of the plugin.
-     * - MyusefulpluginI18n. Defines internationalization functionality.
-     * - MyusefulpluginAdmin. Defines all hooks for the admin area.
-     * - MyusefulpluginPublic. Defines all hooks for the public side of the site.
+     * - NnSmartTooltipLoader. Orchestrates the hooks of the plugin.
+     * - NnSmartTooltipI18n. Defines internationalization functionality.
+     * - NnSmartTooltipAdmin. Defines all hooks for the admin area.
+     * - NnSmartTooltipPublic. Defines all hooks for the public side of the site.
      *
      * Create an instance of the loader which will be used to register the hooks
      * with WordPress.
@@ -90,34 +90,34 @@ class Myusefulplugin
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/MyusefulpluginLoader.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/NnSmartTooltipLoader.php';
 
         /**
          * The class responsible for defining internationalization functionality
          * of the plugin.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/MyusefulpluginI18n.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/NnSmartTooltipI18n.php';
 
-        /**
+        /**s
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/MyusefulpluginAdmin.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/NnSmartTooltipAdmin.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/TinymceTooltip.php';
-        //require_once plugin_dir_path(__DIR__) . 'admin/acf.php';
+        require_once plugin_dir_path(__DIR__) . 'admin/partials/tinymceTooltipPopup.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'public/MyusefulpluginPublic.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'public/NnSmartTooltipPublic.php';
 
-        $this->loader = new MyusefulpluginLoader();
+        $this->loader = new NnSmartTooltipLoader();
     }
 
     /**
      * Define the locale for this plugin for internationalization.
      *
-     * Uses the MyusefulpluginI18n class in order to set the domain and to register the hook
+     * Uses the NnSmartTooltipI18n class in order to set the domain and to register the hook
      * with WordPress.
      *
      * @since 1.0.0
@@ -125,7 +125,7 @@ class Myusefulplugin
      */
     private function setLocale()
     {
-        $plugin_i18n = new MyusefulpluginI18n();
+        $plugin_i18n = new NnSmartTooltipI18n();
         $this->loader->addAction('plugins_loaded', $plugin_i18n, 'loadPluginTextdomain');
     }
 
@@ -138,7 +138,8 @@ class Myusefulplugin
      */
     private function defineAdminHooks()
     {
-        $pluginAdmin = new MyusefulpluginAdmin($this->getPluginName(), $this->getVersion());
+        $pluginAdmin = new NnSmartTooltipAdmin($this->getPluginName(), $this->getVersion());
+
         $tinymceTooltip = new TinymceTooltip();
 
         if (is_admin()) {
@@ -159,7 +160,7 @@ class Myusefulplugin
      */
     private function definePublicHooks()
     {
-        $pluginPublic = new MyusefulpluginPublic($this->getPluginName(), $this->getVersion());
+        $pluginPublic = new NnSmartTooltipPublic($this->getPluginName(), $this->getVersion());
 
         $this->loader->addAction('wp_enqueue_scripts', $pluginPublic, 'enqueueStyles');
         $this->loader->addAction('wp_enqueue_scripts', $pluginPublic, 'enqueueScripts');
@@ -191,7 +192,7 @@ class Myusefulplugin
      * The reference to the class that orchestrates the hooks with the plugin.
      *
      * @since 1.0.0
-     * @return MyusefulpluginLoader Orchestrates the hooks of the plugin.
+     * @return NnSmartTooltipLoader Orchestrates the hooks of the plugin.
      */
     public function getLoader()
     {

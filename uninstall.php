@@ -22,25 +22,10 @@
  * @link       AuthorUri
  * @since      1.0.0
  *
- * @package    Myusefulplugin
+ * @package    NnSmartTooltip
  */
-
-require_once plugin_dir_path(__FILE__) . 'includes/MyusefulpluginActivator.php';
 
 // If uninstall not called from WordPress, then exit.
 if (!defined('WP_UNINSTALL_PLUGIN')) {
     exit;
 }
-
-/**
- * Simple Example for uninstall plugin if we have a tables
- */
-
-//global $wpdb;
-//delete_option('jal_db_version');
-//$tableFirst = $wpdb->prefix . MyusefulpluginActivator::TABLE_FIRST;
-//$tableSecond = $wpdb->prefix . MyusefulpluginActivator::TABLE_SECOND;
-//
-//$sql = sprintf('DROP TABLE IF EXISTS %s, %s', $tableFirst, $tableSecond);
-//
-//$wpdb->query($sql);

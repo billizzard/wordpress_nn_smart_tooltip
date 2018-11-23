@@ -1,8 +1,32 @@
 (function( $ ) {
     class TinymceTooltip {
         constructor() {
-            this._addButtonToTinymce();
-            this._addEvents();
+            this.tooltipPopup = {
+                container: $('#acf-group_5be945fe0b28d'),
+                isOpened: false,
+            };
+
+            if (this.tooltipPopup.container.length) {
+                this.tooltipPopup.collapseButton = this.tooltipPopup.container.find('.handlediv');
+                this.tooltipPopup.header = this.tooltipPopup.container.find('h2');
+                this._addButtonToTinymce();
+                this._init();
+                this._addEvents();
+            }
+        }
+
+        _init() {
+            this.tooltipPopup.collapseButton.remove();
+            this.tooltipPopup.header.removeClass().addClass('nn_popup_header');
+            this.tooltipPopup.header.wrap('<div class="nn_popup_header-wrapper"></div>');
+            this.tooltipPopup.headerWrapper = this.tooltipPopup.container.find('.nn_popup_header-wrapper');
+            this.tooltipPopup.headerWrapper
+                .append('<div class="nn_popup_button save js_nn_popup_save dashicons dashicons-yes" title="Save"></div>')
+                .append('<div class="nn_popup_button close js_nn_popup_close dashicons dashicons-no" title="Close"></div>');
+            this.tooltipPopup.container.removeClass();
+            this.tooltipPopup.container.draggable();
+            this.tooltipPopup.container.hide();
+            this.tooltipPopup.container.css('opacity', '1');
         }
 
         _addEvents() {
@@ -37,8 +61,23 @@
             }
         }
 
-        _tooltipButtonClickEvent() {
-            alert('dfdf');
+        _tooltipButtonClickEvent(event) {
+            this._showTooltipPopup(event.clientX, event.clientY);
+        }
+
+        _showTooltipPopup(x, y) {
+            if (!this.tooltipPopup.isOpened) {
+                this._setPopupPosition(x + 20, y + 20);
+                this.tooltipPopup.container.show();
+                this.tooltipPopup.isOpened = true;
+            } else {
+                this.tooltipPopup.container.hide();
+                this.tooltipPopup.isOpened = false;
+            }
+        }
+
+        _setPopupPosition(x, y) {
+            this.tooltipPopup.container.css({top: y, left: x, right: 'auto', bottom: 'auto'})
         }
     }
 

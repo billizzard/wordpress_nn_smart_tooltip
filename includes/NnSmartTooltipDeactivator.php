@@ -5,11 +5,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since 1.0.0
- * @package Myusefulplugin
- * @subpackage Myusefulplugin/includes
+ * @package NnSmartTooltip
+ * @subpackage NnSmartTooltip/includes
  * @author AuthorName <AuthorEmail@email.com>
  */
-class MyusefulpluginDeactivator
+class NnSmartTooltipDeactivator
 {
     /**
      * Short Description. (use period)
