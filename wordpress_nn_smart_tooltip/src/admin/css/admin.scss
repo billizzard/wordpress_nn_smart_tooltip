@@ -1,0 +1,53 @@
+#acf-group_5be945fe0b28d {
+  background-color: #f3e6ca;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 9999;
+  position: fixed;
+  display: none;
+  top: 40px;
+  left: -3000px;
+
+  h2 {
+    cursor: move;
+  }
+
+  .nn_popup_header-wrapper {
+    border-bottom: 1px solid #fff;
+    display: flex;
+
+    .nn_popup_header {
+      flex-grow: 1;
+    }
+
+    .nn_popup_button {
+      font-size: 35px;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      color: #32272c;
+      transition: 0.5s;
+
+      &:hover {
+        background-color: #e4cd9a;
+      }
+
+      &.save:hover {
+        color: #008000;
+      }
+
+      &.close:hover {
+        background-color: #ff1e1e;
+      }
+
+      &.loader {
+        background-image: url("../../images/loader.svg");
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: none;
+      }
+    }
+  }
+}

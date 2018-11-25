@@ -1,1 +1,10 @@
+*.log
 .idea/
+.data/
+node_modules/
+/wordpress_nn_smart_tooltip/assets/
+/package.json
+/package-lock.json
+/.babelrc
+/.eslintrc.json
+/webpack.config.js

@@ -1,0 +1,63 @@
+version: "3.3"
+
+services:
+    nginx:
+        build: ./nginx
+        links:
+            - php-fpm-wordpress
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - ${DB_PATH_HOST}/nginx/logs:/var/log/nginx
+            - app-volume:/var/www/wordpress
+            - ./wordpress_nn_smart_tooltip:${APP_PATH_HOST}/wordpress/wp-content/plugins/wordpress_nn_smart_tooltip
+
+    db:
+        image: mysql:5.7
+        volumes:
+          - ${DB_PATH_HOST}/mysql:/var/lib/mysql
+          - ${DB_PATH_HOST}/wp.cnf:/etc/mysql/conf.d/wp.cnf
+          - .:${APP_PATH_HOST}
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+    php-fpm-wordpress:
+        build: ./php-fpm-wordpress
+        volumes:
+            - ./wordpress_nn_smart_tooltip:${APP_PATH_HOST}/wordpress/wp-content/plugins/wordpress_nn_smart_tooltip
+            - ${DB_PATH_HOST}/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+            - app-volume:${APP_PATH_HOST}/wordpress
+        depends_on:
+            - db
+        environment:
+            WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_USER: ${MYSQL_USER}
+            WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+        ports:
+            - 9000:9000
+
+    node:
+        image: node:8
+        working_dir: ${APP_PATH_HOST}
+        environment:
+          - NODE_ENV=${ENV}
+        volumes:
+          - .:${APP_PATH_HOST}
+        expose:
+          - 8081
+        command: >
+            bash -c "cp nodejs/package.json ./
+            && cp nodejs/.babelrc ./
+            && cp nodejs/.eslintrc.json ./
+            && cp nodejs/webpack.config.js ./
+            && npm run dev"
+
+volumes:
+     app-volume:
