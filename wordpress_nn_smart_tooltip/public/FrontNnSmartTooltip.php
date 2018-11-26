@@ -17,13 +17,13 @@ class FrontNnSmartTooltip
             $tooltips = $mapper->getByIds($ids);
 
             if ($tooltips) {
-                $jsonTooltips = $this->getJsonFromTooltips($tooltips);
+                foreach ($tooltips as $tooltip) {
+                    $content .= $this->getHtmlTooltip($tooltip);
+                }
             }
         }
 
-        return isset($jsonTooltips) ?
-            $content . "<textarea>" . $jsonTooltips . "</textarea>" :
-            $content;
+        return $content;
     }
 
     /**
@@ -36,8 +36,7 @@ class FrontNnSmartTooltip
         $dom = new DOMDocument;
         $dom->loadHTML($content);
         $finder = new DomXPath($dom);
-        $classname = "nnst";
-        $spans = $finder->query("//span[contains(@class, '$classname')]");
+        $spans = $finder->query("//span[contains(@class, 'nnst')]");
 
         $ids = [];
         foreach ($spans as $span) {
@@ -52,17 +51,11 @@ class FrontNnSmartTooltip
     }
 
     /**
-     * @param TooltipModel[] $tooltips
-     *
-     * @return false|string
+     * @param TooltipModel $tooltip
+     * @return string
      */
-    private function getJsonFromTooltips($tooltips)
+    private function getHtmlTooltip($tooltip)
     {
-        $result = [];
-        foreach ($tooltips as $tooltip) {
-            $result[$tooltip->getId()] = $tooltip->getPreparedTooltip();
-        }
-
-        return json_encode($result);
+        return '<div class="nnst-info" data-id="' . $tooltip->getId() . '"><div class="nnst-content">' . $tooltip->getPreparedTooltip() . '</div><div class="nnst-tooltip-arrow"></div></div>';
     }
 }
