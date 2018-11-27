@@ -1,6 +1,6 @@
 <?php
 
-abstract class BaseMapper
+abstract class NnSmartTooltipBaseMapper
 {
     protected $primaryKey = 'id';
     /** @var WP_Query */

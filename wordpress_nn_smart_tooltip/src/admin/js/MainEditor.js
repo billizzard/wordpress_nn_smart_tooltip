@@ -18,7 +18,7 @@ export default class MainEditor {
     }
 
     _addEvents() {
-        $('.wp-editor-container').on('click', '.mce-nn_smart_tooltip', $.proxy(this._tooltipButtonClickEvent, this));
+        jQuery('.wp-editor-container').on('click', '.mce-nn_smart_tooltip', jQuery.proxy(this._tooltipButtonClickEvent, this));
     }
 
     _addButtonToTinymce() {

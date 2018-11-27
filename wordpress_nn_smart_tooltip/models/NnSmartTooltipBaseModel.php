@@ -1,6 +1,6 @@
 <?php
 
-abstract class BaseModel
+abstract class NnSmartTooltipBaseModel
 {
     /**
      * WP table model

@@ -1,8 +1,8 @@
 <?php
 
-require_once plugin_dir_path(dirname(__FILE__)) . 'models/BaseModel.php';
+require_once plugin_dir_path(dirname(__FILE__)) . 'models/NnSmartTooltipBaseModel.php';
 
-class TooltipModel extends BaseModel
+class NnSmartTooltipTooltipModel extends NnSmartTooltipBaseModel
 {
     /**
      * @return int

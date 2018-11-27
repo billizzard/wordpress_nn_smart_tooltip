@@ -102,8 +102,9 @@ class NnSmartTooltip
          * The class responsible for defining all actions that occur in the admin area.
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/NnSmartTooltipAdmin.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/TinymceTooltip.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/NnSmartTooltipTinymceTooltip.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/tinymceTooltipPopup.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/NnSmartTooltipSettings.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing
@@ -141,9 +142,12 @@ class NnSmartTooltip
     {
         $pluginAdmin = new NnSmartTooltipAdmin($this->getPluginName(), $this->getVersion());
 
-        $tinymceTooltip = new TinymceTooltip();
+        $tinymceTooltip = new NnSmartTooltipTinymceTooltip();
+        $settingsPage = new NnSmartTooltipSettings();
 
         if (is_admin()) {
+            $this->loader->addAction('admin_menu', $settingsPage, 'createTooltipMenu', 10, 4);
+            $this->loader->addAction('admin_menu', $settingsPage, 'registerSettings', 10);
             $this->loader->addFilter('mce_external_plugins', $tinymceTooltip, 'addTooltipButtonToPanel');
             $this->loader->addFilter('mce_buttons', $tinymceTooltip, 'registerTooltipButton');
             $this->loader->addFilter('mce_css', $tinymceTooltip, 'addStyles');

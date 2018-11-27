@@ -25,7 +25,17 @@
  * @package    NnSmartTooltip
  */
 
+require_once plugin_dir_path(__FILE__) . 'includes/NnSmartTooltipActivator.php';
+
 // If uninstall not called from WordPress, then exit.
 if (!defined('WP_UNINSTALL_PLUGIN')) {
     exit;
 }
+
+global $wpdb;
+delete_option(NnSmartTooltipActivator::VERSION_OPTION);
+$tooltipTable = $wpdb->prefix . NnSmartTooltipActivator::TABLE_TOOLTIP;
+
+$sql = sprintf('DROP TABLE IF EXISTS %s', $tooltipTable);
+
+$wpdb->query($sql);

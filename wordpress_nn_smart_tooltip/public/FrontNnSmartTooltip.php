@@ -1,5 +1,5 @@
 <?php
-require_once plugin_dir_path(dirname(__FILE__)) . 'mappers/TooltipMapper.php';
+require_once plugin_dir_path(dirname(__FILE__)) . 'mappers/NnSmartTooltipTooltipMapper.php';
 
 class FrontNnSmartTooltip
 {
@@ -12,14 +12,16 @@ class FrontNnSmartTooltip
     {
         $ids = $this->getIdsFromText($content);
         if ($ids) {
-            /** @var TooltipMapper $mapper */
-            $mapper = TooltipMapper::getInstance();
+            /** @var NnSmartTooltipTooltipMapper $mapper */
+            $mapper = NnSmartTooltipTooltipMapper::getInstance();
             $tooltips = $mapper->getByIds($ids);
 
             if ($tooltips) {
+                $content .= '<div id="nn_smart_tooltip-container" data-event="' .  get_option('nn_smart_tooltip_event') . '">';
                 foreach ($tooltips as $tooltip) {
                     $content .= $this->getHtmlTooltip($tooltip);
                 }
+                $content .= '</div>';
             }
         }
 
@@ -51,7 +53,8 @@ class FrontNnSmartTooltip
     }
 
     /**
-     * @param TooltipModel $tooltip
+     * @param NnSmartTooltipTooltipModel $tooltip
+     *
      * @return string
      */
     private function getHtmlTooltip($tooltip)

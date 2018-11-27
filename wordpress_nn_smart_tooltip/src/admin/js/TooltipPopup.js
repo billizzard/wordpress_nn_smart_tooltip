@@ -1,7 +1,7 @@
 export default class TooltipPopup {
     constructor(popupEditor) {
         this.tooltipPopup = {
-            container: $('#acf-group_5be945fe0b28d'),
+            container: jQuery('#acf-group_5be945fe0b28d'),
             isOpened: false,
         };
 
@@ -32,6 +32,7 @@ export default class TooltipPopup {
                     reject => this._toggleLoader(false)
                 );
             } else {
+                this.popupEditor.setContent('');
                 this.existingTooltipId = null;
             }
             this._showPopup();
@@ -68,8 +69,8 @@ export default class TooltipPopup {
     }
 
     _addEvents() {
-        $('.js_nn_popup_close').on('click', $.proxy(this._popupCloseButtonEvent, this));
-        $('.js_nn_popup_save').on('click', $.proxy(this._popupSaveButtonEvent, this));
+        jQuery('.js_nn_popup_close').on('click', jQuery.proxy(this._popupCloseButtonEvent, this));
+        jQuery('.js_nn_popup_save').on('click', jQuery.proxy(this._popupSaveButtonEvent, this));
     }
 
     _toggleLoader(show) {

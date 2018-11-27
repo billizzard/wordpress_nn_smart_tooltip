@@ -3,7 +3,7 @@ import TooltipButtonHadler from './handlers/TooltipButtonHandler';
 export default class PopupEditor {
     constructor() {
         this.tooltipPopup = {
-            container: $('#acf-group_5be945fe0b28d'),
+            container: jQuery('#acf-group_5be945fe0b28d'),
         };
     }
 
@@ -20,7 +20,7 @@ export default class PopupEditor {
     }
 
     setContent(html) {
-        let iframe = this.tooltipPopup.container.find('iframe')
+        let iframe = this.tooltipPopup.container.find('iframe');
         if (iframe) {
             iframe.contents().find('body').html(html);
         }
@@ -31,15 +31,13 @@ export default class PopupEditor {
             let data = {
                 tooltip: this.getContent(),
                 action: 'save_tooltip',
-                postId: $('#post_ID').val(),
+                postId: jQuery('#post_ID').val(),
             };
 
-            if (data.tooltip) {
-                TooltipButtonHadler.saveTooltip(data).then(
-                    response => resolve(response.insertedId),
-                    response => reject(response),
-                );
-            }
+            TooltipButtonHadler.saveTooltip(data).then(
+                response => resolve(response.insertedId),
+                response => reject(response),
+            );
         });
     }
 
@@ -51,11 +49,13 @@ export default class PopupEditor {
                 id,
             };
 
-            if (data.tooltip && data.id) {
+            if (data.id) {
                 TooltipButtonHadler.saveTooltip(data).then(
                     (response) => resolve(response.insertedId),
                     (response) => reject(response),
                 );
+            } else {
+                reject();
             }
         });
     }

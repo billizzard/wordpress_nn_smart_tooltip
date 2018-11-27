@@ -1,31 +1,32 @@
 export default class TooltipTag {
     constructor() {
         this.tooltip = {
-            container: $('.nnst'),
+            container: jQuery('.nnst'),
         };
-
-        this.mode = 'click';
 
         this.openedTooltip = null;
         this.startScrollTop = 0;
         this.startTop = 0;
+
         if (this.tooltip.container.length) {
+            this.event = jQuery('#nn_smart_tooltip-container').data('event');
+            this.event = this.event === 'hover' ? 'hover' : 'click';
             this._addEvents();
         }
     }
 
     _addEvents() {
-        if (this.mode === 'click') {
-            this.tooltip.container.on('click', $.proxy(this._tagClickEvent, this));
+        if (this.event === 'hover') {
+            this.tooltip.container.on('mouseover', jQuery.proxy(this._tagClickEvent, this));
+            this.tooltip.container.on('mouseout', jQuery.proxy(this._hideAllTooltips, this));
         } else {
-            this.tooltip.container.on('mouseover', $.proxy(this._tagClickEvent, this));
-            this.tooltip.container.on('mouseout', $.proxy(this._hideAllTooltips, this));
+            this.tooltip.container.on('click', jQuery.proxy(this._tagClickEvent, this));
         }
 
-        $('body').on('click', $.proxy(this._bodyClickEvent, this));
-        $(window).scroll(() => {
+        jQuery('body').on('click', jQuery.proxy(this._bodyClickEvent, this));
+        jQuery(window).scroll(() => {
             if (this.openedTooltip) {
-                this.openedTooltip.css('top', this.startTop - ($(window).scrollTop() - this.startScrollTop));
+                this.openedTooltip.css('top', this.startTop - (jQuery(window).scrollTop() - this.startScrollTop));
             }
         });
     }
@@ -37,7 +38,7 @@ export default class TooltipTag {
     }
 
     _tagClickEvent(event) {
-        let target = $(event.target);
+        let target = jQuery(event.target);
         let id = target.data('id');
         if (id) {
             this._triggerTooltip(id, event.clientX, event.clientY);
@@ -45,12 +46,12 @@ export default class TooltipTag {
     }
 
     _hideAllTooltips() {
-        $('.nnst-info').hide();
+        jQuery('.nnst-info').hide();
         this.openedTooltip = null;
     }
 
     _triggerTooltip(id, x, y) {
-        let tooltipInfo = $('.nnst-info[data-id="' + id + '"]');
+        let tooltipInfo = jQuery('.nnst-info[data-id="' + id + '"]');
 
         if (tooltipInfo.length) {
             if (!this.openedTooltip) {
@@ -66,7 +67,7 @@ export default class TooltipTag {
         tooltip.show();
         y = y - tooltip.height() - 30;
         this.startTop = y;
-        this.startScrollTop = $(window).scrollTop();
+        this.startScrollTop = jQuery(window).scrollTop();
         this.openedTooltip = tooltip;
 
         tooltip.css({

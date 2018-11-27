@@ -1,7 +1,7 @@
 <?php
-require_once plugin_dir_path(dirname(__FILE__)) . 'mappers/TooltipMapper.php';
+require_once plugin_dir_path(dirname(__FILE__)) . 'mappers/NnSmartTooltipTooltipMapper.php';
 
-class TinymceTooltip
+class NnSmartTooltipTinymceTooltip
 {
     /**
      * @param array $pluginSettings
@@ -22,7 +22,9 @@ class TinymceTooltip
      */
     public function registerTooltipButton($buttons)
     {
-        $buttons[] = 'nn_smart_tooltip';
+        if ($this->isPostTypeSupported()) {
+            $buttons[] = 'nn_smart_tooltip';
+        }
 
         return $buttons;
     }
@@ -41,8 +43,8 @@ class TinymceTooltip
         header('Content-type:application/json');
         $id = isset($_POST['postId']) ? (int) $_POST['postId'] : null;
         if ($id) {
-            /** @var TooltipMapper $mapper */
-            $mapper = TooltipMapper::getInstance();
+            /** @var NnSmartTooltipTooltipMapper $mapper */
+            $mapper = NnSmartTooltipTooltipMapper::getInstance();
             $insertedId = $mapper->insert([
                 'post_id' => $id,
                 'tooltip' => $_POST['tooltip'],
@@ -67,9 +69,9 @@ class TinymceTooltip
         $id = isset($_POST['id']) ? (int) $_POST['id'] : null;
 
         if ($id) {
-            /** @var TooltipMapper $mapper */
-            $mapper = TooltipMapper::getInstance();
-            /** @var TooltipModel $model */
+            /** @var NnSmartTooltipTooltipMapper $mapper */
+            $mapper = NnSmartTooltipTooltipMapper::getInstance();
+            /** @var NnSmartTooltipTooltipModel $model */
             $model = $mapper->getById($id);
             if ($model) {
                 echo json_encode(['success' => true, 'data' => [
@@ -84,7 +86,7 @@ class TinymceTooltip
         die();
     }
 
-    /**1
+    /**
      * Update tooltip
      */
     public function ajaxUpdateTooltip()
@@ -93,8 +95,8 @@ class TinymceTooltip
         $id = isset($_POST['id']) ? (int) $_POST['id'] : null;
 
         if ($id && isset($_POST['tooltip'])) {
-            /** @var TooltipMapper $mapper */
-            $mapper = TooltipMapper::getInstance();
+            /** @var NnSmartTooltipTooltipMapper $mapper */
+            $mapper = NnSmartTooltipTooltipMapper::getInstance();
 
             $mapper->update(
                 ['tooltip' => $_POST['tooltip']],
@@ -107,5 +109,10 @@ class TinymceTooltip
 
         echo json_encode(['success' => false]);
         die();
+    }
+
+    private function isPostTypeSupported()
+    {
+        return get_post_type() === 'page' || get_post_type() === 'post';
     }
 }

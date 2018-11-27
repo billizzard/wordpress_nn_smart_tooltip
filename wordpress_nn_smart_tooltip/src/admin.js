@@ -6,7 +6,6 @@ import MainEditor from './admin/js/MainEditor.js';
 import TooltipPopup from './admin/js/TooltipPopup.js';
 import PopupEditor from './admin/js/PopupEditor.js';
 
-window.$ = jQuery;
 let popupEditor = new PopupEditor();
 let tooltipPopup = new TooltipPopup(popupEditor);
 

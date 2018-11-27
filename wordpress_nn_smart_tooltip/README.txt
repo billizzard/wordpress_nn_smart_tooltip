@@ -25,11 +25,10 @@ The contents of the tips limits only your imagination. The appearance of the tip
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. The plugin add button to the editor. Click the button to add a tooltip text. You can add any content to the tooltip.
+2. Tooltip is shown by click or hover (selected in the plugin settings, default by click). View tooltip can be changed using the css as you like.
+3. To edit an existing tooltip, place the cursor in the text with a tooltip (without selecting text) and click the tooltip icon
+4. To remove an existing tooltip, select tooltip text and click the tooltip icon, press save.
 
 == Changelog ==
 
