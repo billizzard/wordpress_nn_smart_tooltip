@@ -54,8 +54,8 @@ class NnSmartTooltip
      */
     public function __construct()
     {
-        if (defined('PLUGIN_NAME_VERSION')) {
-            $this->version = PLUGIN_NAME_VERSION;
+        if (defined('NN_SMART_TOOLTIP')) {
+            $this->version = NN_SMART_TOOLTIP;
         } else {
             $this->version = '1.0.0';
         }
@@ -90,28 +90,28 @@ class NnSmartTooltip
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/NnSmartTooltipLoader.php';
+        require_once plugin_dir_path(__DIR__) . 'includes/NnSmartTooltipLoader.php';
 
         /**
          * The class responsible for defining internationalization functionality
          * of the plugin.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/NnSmartTooltipI18n.php';
+        require_once plugin_dir_path(__DIR__) . 'includes/NnSmartTooltipI18n.php';
 
         /**s
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/NnSmartTooltipAdmin.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/NnSmartTooltipTinymceTooltip.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/tinymceTooltipPopup.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/NnSmartTooltipSettings.php';
+        require_once plugin_dir_path(__DIR__) . 'admin/NnSmartTooltipAdmin.php';
+        require_once plugin_dir_path(__DIR__) . 'admin/NnSmartTooltipTinymceTooltip.php';
+        require_once plugin_dir_path(__DIR__) . 'admin/partials/tinymceTooltipPopup.php';
+        require_once plugin_dir_path(__DIR__) . 'admin/NnSmartTooltipSettings.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'public/NnSmartTooltipPublic.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'public/FrontNnSmartTooltip.php';
+        require_once plugin_dir_path(__DIR__) . 'public/NnSmartTooltipPublic.php';
+        require_once plugin_dir_path(__DIR__) . 'public/FrontNnSmartTooltip.php';
 
         $this->loader = new NnSmartTooltipLoader();
     }
