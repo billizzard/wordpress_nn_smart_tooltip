@@ -34,12 +34,11 @@ export default class MainEditor {
                 editor.addButton('nn_smart_tooltip', {
                     title: 'Add tooltip to text / Exit',
                     classes: 'nn_smart_tooltip',
-                    image : url + "/images/comment.svg",
+                    image: url + "/images/comment.svg",
 
                     onPostRender: function () {
-                        let ctrl = this;
-                        editor.on('NodeChange', function(e) {
-                            ctrl.active(e.element.className === 'nnst');
+                        editor.on('NodeChange', e => {
+                            this.active(e.element.className === 'nnst');
                         });
                     },
                 });
