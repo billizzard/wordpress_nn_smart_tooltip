@@ -1,2 +1,0 @@
-Video:
-styles for popup, styles for border bottom, add, update, remove

@@ -57,7 +57,7 @@ services:
             && cp nodejs/.babelrc ./
             && cp nodejs/.eslintrc.json ./
             && cp nodejs/webpack.config.js ./
-            && npm run dev"
+            && npm run build"
 
 volumes:
      app-volume:

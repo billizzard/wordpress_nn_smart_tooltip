@@ -7,14 +7,14 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              AuthorUri
+ * @link              https://github.com/billizzard
  * @since             1.0.0
  * @package           NnSmartTooltip
  *
  * @wordpress-plugin
  * Plugin Name:       NnSmartTooltip
  * Plugin URI:        MyUserfulPlugin
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Allows you to simply create tips with any content and any styles.
  * Version:           1.0.0
  * Author:            Hmylko Vladimir
  * Author URI:        https://github.com/billizzard

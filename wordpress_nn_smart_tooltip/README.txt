@@ -1,8 +1,8 @@
 === NnSmartTooltip ===
-Contributors: @billizzard
+Contributors: billizzard
 Donate link: https://github.com/billizzard
 Tags: tooltip, note
-Requires at least: 4.5, ACF at least 5.7
+Requires at least: 4.5
 Tested up to: 4.9
 Stable tag: 1.0
 Requires PHP: 5.6
@@ -15,7 +15,9 @@ Allows you to simply create tips with any content and any styles.
 
 It allows you to easily and easily create tooltips for words, phrases and in general for any content.
 The contents of the tips limits only your imagination. The appearance of the tips is very easy to customize as you need.
-The plugin is easier to use and more efficient than its counterparts.
+The plugin is easier to use and more efficient than its counterparts. Requires at least ACF plugin 5.7.
+
+https://www.youtube.com/watch?v=KwczeKdV2bs
 
 == Installation ==
 
