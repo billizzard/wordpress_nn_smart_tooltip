@@ -63,19 +63,11 @@ class NnSmartTooltipAdmin
 
         wp_enqueue_style(
             $this->pluginName,
-            plugin_dir_url(__FILE__) . '../assets/admin.css',
+            plugin_dir_url(__FILE__) . '../plugin-assets/admin.css',
             [],
             $this->version,
             'all'
         );
-
-//        wp_enqueue_style(
-//            $this->pluginName,
-//            'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css',
-//            [],
-//            $this->version,
-//            'all'
-//        );
     }
 
     /**
@@ -99,18 +91,10 @@ class NnSmartTooltipAdmin
 
         wp_enqueue_script(
             $this->pluginName,
-            plugin_dir_url(__FILE__) . '../assets/admin.bundle.js',
+            plugin_dir_url(__FILE__) . '../plugin-assets/admin.bundle.js',
             ['jquery'],
             $this->version,
             false
         );
-
-//        wp_enqueue_script(
-//            $this->pluginName,
-//            'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js',
-//            ['jquery'],
-//            $this->version,
-//            false
-//        );
     }
 }

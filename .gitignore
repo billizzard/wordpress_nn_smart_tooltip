@@ -2,7 +2,7 @@
 .idea/
 .data/
 node_modules/
-/wordpress_nn_smart_tooltip/assets/
+/wordpress_nn_smart_tooltip/plugin-assets/
 /package.json
 /package-lock.json
 /.babelrc

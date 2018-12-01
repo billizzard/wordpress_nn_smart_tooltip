@@ -10,7 +10,7 @@ class NnSmartTooltipTinymceTooltip
      */
     public function addTooltipButtonToPanel($pluginSettings)
     {
-        $pluginSettings['nn_smart_tooltip'] = plugins_url('../assets/admin.bundle.js', __FILE__);
+        $pluginSettings['nn_smart_tooltip'] = plugins_url('../plugin-assets/admin.bundle.js', __FILE__);
 
         return $pluginSettings;
     }
@@ -31,7 +31,7 @@ class NnSmartTooltipTinymceTooltip
 
     public function addStyles($mceCss)
     {
-        $mceCss .= ', ' . plugins_url( '../assets/adminTinymce.css', __FILE__ );
+        $mceCss .= ', ' . plugins_url( '../plugin-assets/adminTinymce.css', __FILE__ );
         return $mceCss;
     }
 

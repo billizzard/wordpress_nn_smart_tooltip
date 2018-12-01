@@ -20,8 +20,8 @@ let conf = {
     ],
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, pluginFolder + '/assets'),
-        publicPath: pluginFolder + '/assets/',
+        path: path.resolve(__dirname, pluginFolder + '/plugin-assets'),
+        publicPath: pluginFolder + '/plugin-assets/',
     },
     externals: {
         jquery: '$',

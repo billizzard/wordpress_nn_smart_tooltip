@@ -73,7 +73,7 @@ class NnSmartTooltipPublic
 
         wp_enqueue_style(
             $this->pluginName,
-            plugin_dir_url(__FILE__) . '../assets/public.css',
+            plugin_dir_url(__FILE__) . '../plugin-assets/public.css',
             [],
             $this->version,
             'all'
@@ -101,7 +101,7 @@ class NnSmartTooltipPublic
 
         wp_enqueue_script(
             $this->pluginName,
-            plugin_dir_url(__FILE__) . '../assets/public.bundle.js',
+            plugin_dir_url(__FILE__) . '../plugin-assets/public.bundle.js',
             ['jquery'],
             $this->version,
             false
