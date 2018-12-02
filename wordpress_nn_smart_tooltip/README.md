@@ -1,1 +1,0 @@
-# wordpress_nn_smart_tooltip

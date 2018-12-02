@@ -55,7 +55,7 @@ abstract class NnSmartTooltipBaseMapper
      */
     public function delete($id)
     {
-        $sql = $this->getClearSql('DELETE FROM %s WHERE %s = %%s', [$this->table(), $this->primaryKey]);
+        $sql = $this->getClearSql('DELETE FROM %s WHERE %s = %%d', [$this->table(), $this->primaryKey]);
         return $this->wpdb->query($this->wpdb->prepare($sql, $id));
     }
 

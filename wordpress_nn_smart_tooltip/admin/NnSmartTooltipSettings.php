@@ -39,20 +39,6 @@ class NnSmartTooltipSettings
         add_settings_error('nn_smart_tooltip_event', 'settings_updated', __('Event field is required'));
     }
 
-    /**
-     * @param string $value
-     *
-     * @return mixed
-     */
-    public function saveIC2AuthKey($value)
-    {
-        if ($value) {
-            return $value;
-        }
-
-        add_settings_error('wiki_ic2_auth_key', 'settings_updated', __('IC2 auth key is required'));
-    }
-
     public function settingsPageContent()
     {
         ob_start();

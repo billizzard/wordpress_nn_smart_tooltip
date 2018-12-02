@@ -8,7 +8,6 @@
  * @since 1.0.0
  * @package NnSmartTooltip
  * @subpackage NnSmartTooltip/includes
- * @author AuthorName <AuthorEmail@email.com>
  */
 class NnSmartTooltipI18n
 {
