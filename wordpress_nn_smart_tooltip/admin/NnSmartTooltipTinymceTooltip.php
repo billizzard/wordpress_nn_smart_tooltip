@@ -47,7 +47,7 @@ class NnSmartTooltipTinymceTooltip
             $mapper = NnSmartTooltipTooltipMapper::getInstance();
             $insertedId = $mapper->insert([
                 'post_id' => $id,
-                'tooltip' => $_POST['tooltip'],
+                'tooltip' => esc_html($_POST['tooltip']),
             ]);
 
             if ($insertedId) {
@@ -99,7 +99,7 @@ class NnSmartTooltipTinymceTooltip
             $mapper = NnSmartTooltipTooltipMapper::getInstance();
 
             $mapper->update(
-                ['tooltip' => $_POST['tooltip']],
+                ['tooltip' => esc_html($_POST['tooltip'])],
                 ['id' => $id]
             );
 

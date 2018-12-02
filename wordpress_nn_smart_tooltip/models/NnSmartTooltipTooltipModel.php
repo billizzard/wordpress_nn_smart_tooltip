@@ -33,6 +33,6 @@ class NnSmartTooltipTooltipModel extends NnSmartTooltipBaseModel
      */
     public function getPreparedTooltip()
     {
-        return stripslashes($this->getTooltip());
+        return wp_specialchars_decode(stripslashes($this->getTooltip()), ENT_QUOTES);
     }
 }
