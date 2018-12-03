@@ -28,10 +28,11 @@ https://www.youtube.com/watch?v=KwczeKdV2bs
 
 == Screenshots ==
 
-1. The plugin add button to the editor. Click the button to add a tooltip text. You can add any content to the tooltip.
-2. Tooltip is shown by click or hover (selected in the plugin settings, default by click). View tooltip can be changed using the css as you like.
-3. To edit an existing tooltip, place the cursor in the text with a tooltip (without selecting text) and click the tooltip icon
-4. To remove an existing tooltip, select tooltip text and click the tooltip icon, press save.
+1. The plugin allows you to create hints with any content.
+2. The plugin add button to the editor. Click the button to add a tooltip text. You can add any content to the tooltip.
+3. Tooltip is shown by click or hover (selected in the plugin settings, default by click). View tooltip can be changed using the css as you like.
+4. To edit an existing tooltip, place the cursor in the text with a tooltip (without selecting text) and click the tooltip icon
+5. To remove an existing tooltip, select tooltip text and click the tooltip icon, press save.
 
 == Changelog ==
 
